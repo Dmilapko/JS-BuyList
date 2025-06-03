@@ -1,17 +1,430 @@
+/* General body and page styling */
+body {
+    font-family: Arial, sans-serif; /* Using a common sans-serif font */
+    margin: 0;
+    background-color: #e9e9e9; /* Light gray background for the page */
+    padding: 20px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Main container for the two panels */
+.container {
+    display: flex;
+    gap: 20px; /* Space between left and right panels */
+    max-width: 920px; /* Approximate max width from the image */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Styling for left and right panels */
+.left-panel, .right-panel {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.left-panel {
+    flex: 2; /* Left panel takes up more space */
+}
+
+.right-panel {
+    flex: 1; /* Right panel takes less space */
+    height: fit-content; /* Adjusts height to content */
+}
+
+/* Styling for the "Add item" form at the top of the left panel */
+.add-item-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0; /* Light separator line */
+}
+
+.add-item-form input[type="text"] {
+    flex-grow: 1; /* Input field takes available space */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px; /* Space before the "Add" button */
+    font-size: 16px;
+    position: relative; /* For tooltip, if added */
+}
+
+/* General button styling */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    position: relative; /* Required for tooltip positioning */
+    line-height: 1.2; /* Ensure text is vertically centered */
+}
+
+.btn:hover {
+    opacity: 0.85; /* Slight opacity change on hover */
+}
+
+/* Specific button styles */
+.btn-add {
+    background-color: #3b82f6; /* Blue */
+    color: white;
+}
+
+.btn-status {
+    background-color: #e5e7eb; /* Light gray */
+    color: #374151; /* Darker gray text */
+    margin: 0 5px 0 10px; /* Spacing around the status button */
+    min-width: 90px; /* To fit "Не куплено" / "Куплено" */
+    text-align: center;
+}
+
+.btn-delete {
+    background-color: #ef4444; /* Red */
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    padding: 0; /* Remove padding to fit '×' */
+    border-radius: 4px;
+}
+
+/* Product list styling in the left panel */
+.product-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-list-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0; /* Separator line between items */
+}
+
+.product-list-item:last-child {
+    border-bottom: none; /* No line for the last item */
+}
+
+.product-name {
+    flex-grow: 1; /* Product name takes available space */
+    font-size: 16px;
+    padding-right: 10px; /* Space before other controls */
+}
+
+.product-name-input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #3c77ba; 
+    border-radius: 4px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+
+.quantity-display {
+    background-color: #f3f4f6;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin: 0 10px;
+    font-size: 14px;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Controls for increasing/decreasing quantity */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    margin: 0 5px 0 10px; /* Spacing around quantity controls */
+}
+
+.btn-quantity {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* Circular buttons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0;
+}
+
+.btn-minus {
+    background-color: #ef4444; /* Red */
+    color: white;
+}
+.btn-minus.disabled {
+    background-color: #fca5a5; /* Lighter red for disabled state */
+    cursor: not-allowed;
+    opacity: 1; /* Override hover opacity for disabled */
+}
+.btn-minus.disabled:hover {
+    opacity: 1;
+}
+
+
+.btn-plus {
+    background-color: #22c55e; /* Green */
+    color: white;
+}
+
+.quantity-value {
+    background-color: #f3f4f6; 
+    padding: 5px 0px;
+    border-radius: 4px;
+    margin: 8px;
+    min-width: 30px;
+    text-align: center;
+    font-size: 14px;
+    height: 30px;
+    line-height: 20px;
+}
+
+/* Conditional display for item states */
+.product-list-item.item-not-purchased .quantity-controls,
+.product-list-item.item-not-purchased .btn-delete,
+.product-list-item.item-not-purchased .product-name-input {
+    display: none; /* Hide these if item is not purchased */
+}
+.product-list-item.item-not-purchased .product-name{
+	text-decoration: line-through;
+}
+
+.product-list-item.item-purchased .quantity-display,
+.product-list-item.item-purchased .product-name {
+    display: none; /* Hide static quantity if item is purchased (has controls) */
+}
+
+
+/* Right panel summary sections */
+.right-panel h2 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #333;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.summary-section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0; /* Separator line */
+}
+.summary-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.summary-items {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to next line */
+    gap: 8px; /* Space between summary items */
+}
+
+/* Styling for individual product items in the right panel summary */
 .product-item {
-	background-color: gray;
-	display: inline-block;
-	height: 25px;
-	padding: 5px;
+	background-color: #e5e7eb; /* Light gray background */
+	display: inline-flex;
+    align-items: center;
+	padding: 6px 10px;
 	border-radius: 5px;
+    font-size: 14px;
+    position: relative; /* For tooltip */
+    cursor: default; /* Or pointer if they were clickable */
+}
+
+.product-item.bought
+{
+	text-decoration: line-through;
 }
 
 .amount {
-	background-color: yellow;
-	border-radius: 10px;
-	
-	display: inline-block;
-	height: 20px;
-	width: 20px;
-	text-align: center;
+	background-color: #f97316; /* Orange for quantity badge */
+    color: white;
+	border-radius: 12px; /* Circular badge */
+	display: inline-flex;
+    align-items: center;
+    justify-content: center;
+	min-width: 22px;
+	height: 22px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 8px; /* Space between item name and amount */
+    padding: 0 4px;
+}
+
+/* Badge styling (Requirement 1, 2) */
+.badge {
+    position: fixed;
+    bottom: 0;
+    left: 20px;
+    background-color: #5b21b6; /* Dark purple */
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    z-index: 1000;
+    font-size: 14px;
+    overflow: hidden; /* Crucial for the slide-up effect */
+    height: 40px; /* Initial height for one line of text + padding */
+    transition: height 0.3s ease-out, background-color 0.3s ease-out;
+    line-height: 20px; /* Consistent line height for text */
+    cursor: default;
+}
+
+.badge .author-info-hover,
+.badge .badge-text-visible {
+    display: block;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.badge:hover {
+    height: 70px; /* Increased height to show both lines of text */
+    background-color: #7c3aed; /* Lighter purple on hover */
+}
+
+.btn[data-tooltip]::after,
+.product-item[data-tooltip]::after,
+.add-item-form input[type="text"][data-tooltip]::after { /* Added for input field as well */
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 7px); /* Position tooltip above the element */
+    left: 50%;
+    transform: translateX(-50%) scaleY(0); /* Initial: hidden and scaled down */
+    transform-origin: bottom; /* Animation scales from the bottom */
+    background-color: #5b21b6; /* Purple background for tooltip */
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px; /* Rounded corners for tooltip */
+    font-size: 12px;
+    white-space: nowrap; /* Prevent tooltip text from wrapping */
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    z-index: 100; /* Ensure tooltip is above other elements */
+    pointer-events: none; /* Tooltip should not interfere with mouse events on the button */
+}
+
+.btn[data-tooltip]:hover::after,
+.product-item[data-tooltip]:hover::after,
+.add-item-form input[type="text"][data-tooltip]:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) scaleY(1); /* Visible and scaled up on hover */
+}
+
+
+/* Responsive columns (Requirement 4) */
+@media (max-width: 500px) {
+    .container {
+        flex-direction: column; /* Stack panels vertically */
+    }
+    .left-panel, .right-panel {
+        flex-basis: auto; /* Reset flex basis */
+        width: 100%; /* Panels take full width */
+    }
+
+    /* Adjust badge for smaller screens */
+    .badge {
+        left: 10px;
+        font-size: 13px;
+        height: 36px;
+    }
+    .badge:hover {
+        height: 65px;
+    }
+    .badge .author-info-hover,
+    .badge .badge-text-visible {
+        padding: 8px 12px;
+    }
+
+    /* Adjust product list items layout on small screens for better readability */
+    .product-list-item {
+        flex-wrap: wrap; /* Allow items in a product row to wrap */
+        gap: 8px; /* Space between wrapped elements */
+    }
+    .product-list-item .product-name,
+    .product-list-item .product-name-input {
+        flex-basis: 100%; /* Name/input takes full width first */
+        margin-bottom: 5px; /* Space below name if it wraps */
+        padding-right: 0;
+    }
+    .product-list-item .quantity-controls,
+    .product-list-item .btn-status {
+        margin-left: 0; /* Reset some margins if items wrap */
+    }
+}
+
+/* Badge printing styles (Requirement 3) */
+@media print {
+    body {
+        background-color: white !important; /* Ensure page background is white for print */
+        padding: 0;
+        margin: 0;
+        color: black !important;
+    }
+    .container, .left-panel, .right-panel, .add-item-form, .product-list {
+        /* Optional: Simplify or hide main content for print if only badge is focus
+           For now, assume main content should also print reasonably */
+        box-shadow: none !important;
+        border: 1px solid #ccc; /* Simple border for panels */
+    }
+    .btn, .product-item { /* Simplify buttons for print */
+        border: 1px solid #999 !important;
+        background-color: #f0f0f0 !important;
+        color: black !important;
+    }
+    .btn-add { background-color: #dbeafe !important; } /* Lighter blue */
+    .btn-delete, .btn-minus { background-color: #fee2e2 !important; } /* Lighter red */
+    .btn-plus { background-color: #dcfce7 !important; } /* Lighter green */
+    .amount { background-color: #fed7aa !important; color: black !important; } /* Lighter orange */
+
+
+    .badge {
+        position: static !important; /* Badge becomes part of normal document flow */
+        margin: 20px auto; /* Center badge on its own line */
+        width: fit-content;
+        background-color: white !important;
+        color: #5b21b6 !important; /* Purple text */
+        border: 1px solid #5b21b6 !important; /* Purple border */
+        border-radius: 4px !important; /* Standard border radius for print */
+        height: auto !important; /* Show full content */
+        padding: 10px 15px !important;
+        text-align: center;
+        overflow: visible !important; /* Ensure content is not clipped */
+        font-size: 12pt !important; /* Readable print font size */
+    }
+
+    /* Hide the texts normally shown in the badge */
+    .badge .author-info-hover,
+    .badge .badge-text-visible {
+        display: none !important;
+    }
+
+    /* Display the author's name using the data-attribute */
+    .badge::before {
+        content: attr(data-author-name);
+        display: block;
+        font-weight: bold;
+    }
+
+    /* Hide tooltips during print */
+    [data-tooltip]::after {
+        display: none !important;
+    }
 }

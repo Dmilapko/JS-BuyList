@@ -1,16 +1,86 @@
 <!DOCTYPE html>
-<html>
-<head lang="uk">
+<html lang="uk">
+<head>
     <meta charset="UTF-8">
-    <title>My Page</title>
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 <body>
-	<span class="product-item">
-		Apple
-		<span class="amount">4</span>
-	</span>
+    <div class="container">
+        <div class="left-panel">
+            
+            <div class="add-item-form">
+                <input type="text" placeholder="Назва товару" data-tooltip="Введіть назву товару">
+                <button class="btn btn-add" data-tooltip="Додати товар до списку">Додати</button>
+            </div>
+
+            
+            <ul class="product-list">
+                
+                <li class="product-list-item item-not-purchased">
+                    <span class="product-name">Помідори</span>
+                    <span class="quantity-display">2</span>
+                    <button class="btn btn-status" data-tooltip="Позначити як куплене">Не куплено</button>
+                </li>
+
+                
+                <li class="product-list-item item-purchased editing-name">
+                    <span class="product-name">Печиво</span>
+                    <input type="text" class="product-name-input" value="Печиво" data-tooltip="Редагувати назву товару">
+                    <div class="quantity-controls">
+                        <button class="btn btn-quantity btn-minus" data-tooltip="Зменшити кількість">-</button>
+                        <span class="quantity-value">2</span>
+                        <button class="btn btn-quantity btn-plus" data-tooltip="Збільшити кількість">+</button>
+                    </div>
+                    <button class="btn btn-status" data-tooltip="Позначити як не куплене">Куплено</button>
+                    <button class="btn btn-delete" data-tooltip="Видалити товар">×</button>
+                </li>
+
+                
+                <li class="product-list-item item-purchased editing-name">
+                    <span class="product-name">Сир</span> 
+                    <input type="text" class="product-name-input" value="Сир" data-tooltip="Редагувати назву товару">
+                    <div class="quantity-controls">
+                        <button class="btn btn-quantity btn-minus disabled" data-tooltip="Зменшити кількість (мінімум 1)">-</button>
+                        <span class="quantity-value">1</span>
+                        <button class="btn btn-quantity btn-plus" data-tooltip="Збільшити кількість">+</button>
+                    </div>
+                    <button class="btn btn-status" data-tooltip="Позначити як не куплене">Куплено</button>
+                    <button class="btn btn-delete" data-tooltip="Видалити товар">×</button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="right-panel">
+
+            <div class="summary-section">
+                <h2>Залишилося</h2>
+                <div class="summary-items">
+                    <span class="product-item" data-tooltip="Печиво: залишилося 2 шт.">
+                        Печиво <span class="amount">777</span>
+                    </span>
+                    <span class="product-item" data-tooltip="Сир: залишилося 1 шт.">
+                        Сир <span class="amount">777</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="summary-section">
+                <h2>Куплено</h2>
+                <div class="summary-items">
+                     <span class="product-item bought" data-tooltip="Помідори: куплено 2 шт.">
+                        Помідори <span class="amount">2</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="badge" data-author-name="Lapko Dmytro">
+		<span class="badge-text-visible">BuyList</span>
+        <span class="author-info-hover">Lapko Dmytro's work</span>
+    </div>
+
 </body>
 </html>
