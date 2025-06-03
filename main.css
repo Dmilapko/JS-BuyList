@@ -127,12 +127,11 @@ body {
 .product-name-input {
     flex-grow: 1;
     padding: 8px;
-    border: 1px solid #3c77ba; 
     border-radius: 4px;
     font-size: 16px;
     margin-right: 10px;
+    border: none;
 }
-
 
 .quantity-display {
     background-color: #f3f4f6;
