@@ -313,7 +313,7 @@ body {
     transform: translateX(-50%) scaleY(1); 
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .container {
         flex-direction: column; 
     }
