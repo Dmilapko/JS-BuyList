@@ -18,14 +18,14 @@
             
             <ul class="product-list">
                 
-                <li class="product-list-item item-not-purchased">
+                <li class="product-list-item item-purchased">
                     <span class="product-name">Помідори</span>
                     <span class="quantity-display">2</span>
                     <button class="btn btn-status" data-tooltip="Позначити як куплене">Не куплено</button>
                 </li>
 
                 
-                <li class="product-list-item item-purchased">
+                <li class="product-list-item item-not-purchased">
                     <span class="product-name">Печиво</span>
                     <input type="text" class="product-name-input" value="Печиво" data-tooltip="Редагувати назву товару">
                     <div class="quantity-controls">
@@ -33,12 +33,12 @@
                         <span class="quantity-value">2</span>
                         <button class="btn btn-quantity btn-plus" data-tooltip="Збільшити кількість">+</button>
                     </div>
-                    <button class="btn btn-status" data-tooltip="Позначити як не куплене">Куплено</button>
+                    <button class="btn btn-status item-purchased" data-tooltip="Перенести в куплене">Куплено</button>
                     <button class="btn btn-delete" data-tooltip="Видалити товар">×</button>
                 </li>
 
                 
-                <li class="product-list-item item-purchased">
+                <li class="product-list-item item-not-purchased">
                     <span class="product-name">Сир</span> 
                     <input type="text" class="product-name-input" value="Сир" data-tooltip="Редагувати назву товару">
                     <div class="quantity-controls">
@@ -47,7 +47,7 @@
                         <button class="btn btn-quantity btn-plus" data-tooltip="Збільшити кількість">+</button>
                     </div>
                     <button class="btn btn-status" data-tooltip="Позначити як не куплене">Куплено</button>
-                    <button class="btn btn-delete" data-tooltip="Видалити товар">×</button>
+                    <button class="btn btn-delete">×</button>
                 </li>
             </ul>
         </div>
@@ -81,6 +81,6 @@
 		<span class="badge-text-visible">BuyList</span>
         <span class="author-info-hover">Lapko Dmytro's work</span>
     </div>
-
+    <script src="myscripts.js"></script>
 </body>
 </html>

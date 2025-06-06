@@ -184,17 +184,17 @@ body {
     line-height: 20px;
 }
 
-.product-list-item.item-not-purchased .quantity-controls,
-.product-list-item.item-not-purchased .btn-delete,
-.product-list-item.item-not-purchased .product-name-input {
+.product-list-item.item-purchased .quantity-controls,
+.product-list-item.item-purchased .btn-delete,
+.product-list-item.item-purchased .product-name-input {
     display: none; 
 }
-.product-list-item.item-not-purchased .product-name{
+.product-list-item.item-purchased .product-name{
 	text-decoration: line-through;
 }
 
-.product-list-item.item-purchased .quantity-display,
-.product-list-item.item-purchased .product-name {
+.product-list-item.item-not-purchased .quantity-display,
+.product-list-item.item-not-purchased .product-name {
     display: none; 
 }
 
