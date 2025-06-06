@@ -11,44 +11,14 @@
         <div class="left-panel">
             
             <div class="add-item-form">
-                <input type="text" placeholder="Назва товару" data-tooltip="Введіть назву товару">
-                <button class="btn btn-add" data-tooltip="Додати товар до списку">Додати</button>
+                <input type="text" placeholder="Назва товару" id="addName" data-tooltip="Введіть назву товару">
+                <button class="btn btn-add" onclick="addItem();" data-tooltip="Додати товар до списку">Додати</button>
             </div>
 
             
-            <ul class="product-list">
+            <ul class="product-list" id="product_list">
                 
-                <li class="product-list-item item-purchased">
-                    <span class="product-name">Помідори</span>
-                    <span class="quantity-display">2</span>
-                    <button class="btn btn-status" data-tooltip="Позначити як куплене">Не куплено</button>
-                </li>
-
-                
-                <li class="product-list-item item-not-purchased">
-                    <span class="product-name">Печиво</span>
-                    <input type="text" class="product-name-input" value="Печиво" data-tooltip="Редагувати назву товару">
-                    <div class="quantity-controls">
-                        <button class="btn btn-quantity btn-minus" data-tooltip="Зменшити кількість">-</button>
-                        <span class="quantity-value">2</span>
-                        <button class="btn btn-quantity btn-plus" data-tooltip="Збільшити кількість">+</button>
-                    </div>
-                    <button class="btn btn-status item-purchased" data-tooltip="Перенести в куплене">Куплено</button>
-                    <button class="btn btn-delete" data-tooltip="Видалити товар">×</button>
-                </li>
-
-                
-                <li class="product-list-item item-not-purchased">
-                    <span class="product-name">Сир</span> 
-                    <input type="text" class="product-name-input" value="Сир" data-tooltip="Редагувати назву товару">
-                    <div class="quantity-controls">
-                        <button class="btn btn-quantity btn-minus disabled" data-tooltip="Зменшити кількість (мінімум 1)">-</button>
-                        <span class="quantity-value">1</span>
-                        <button class="btn btn-quantity btn-plus" data-tooltip="Збільшити кількість">+</button>
-                    </div>
-                    <button class="btn btn-status" data-tooltip="Позначити як не куплене">Куплено</button>
-                    <button class="btn btn-delete">×</button>
-                </li>
+               
             </ul>
         </div>
 
@@ -56,22 +26,14 @@
 
             <div class="summary-section">
                 <h2>Залишилося</h2>
-                <div class="summary-items">
-                    <span class="product-item" data-tooltip="Печиво: залишилося 2 шт.">
-                        Печиво <span class="amount">777</span>
-                    </span>
-                    <span class="product-item" data-tooltip="Сир: залишилося 1 шт.">
-                        Сир <span class="amount">777</span>
-                    </span>
+                <div class="summary-items" id="summary-not-purchased">
                 </div>
             </div>
 
             <div class="summary-section">
                 <h2>Куплено</h2>
-                <div class="summary-items">
-                     <span class="product-item bought" data-tooltip="Помідори: куплено 2 шт.">
-                        Помідори <span class="amount">2</span>
-                    </span>
+                <div class="summary-items" id="summary-purchased">
+
                 </div>
             </div>
         </div>
